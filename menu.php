@@ -61,9 +61,10 @@
             <h2 class="menuTxtCategories">Appetizers</h2>
         </div>
 
-        <div class="menu">
+       
 
         <?php
+         echo "<div class='menu'>";
 
 foreach ($items as $item) {
     if ($item["id_category"] == 1) {
@@ -80,11 +81,12 @@ foreach ($items as $item) {
     echo "</div>";
     }
     }
+     echo "</div>";
+
         ?>
 
 
-        </div>
-
+       
         <!--Appetizers-->
 
         
@@ -242,7 +244,7 @@ echo "</div>";
         <section class="download-app">
             <h3>Download our App</h3>
             <div class="cta-app-container">
-                <a href="#"><img src="./imgs/app-store.png" alt="Our app from App Store"></a>
+                <a class = "download" href="#"><img src="./imgs/app-store.png" alt="Our app from App Store"></a>
                 <a href="#"><img src="./imgs/google-play.png" alt="Our app from Google Play"></a>
             </div>
         </section>

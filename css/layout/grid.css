@@ -98,7 +98,7 @@
 /* Styles for the CTA app container */
 .cta-app-container {
     display: flex; 
-    gap: 2rem; 
+    gap: 1.60rem; 
 }
 
 /* Styles for the CTA container */
@@ -233,8 +233,8 @@
 .menu {
     padding: 0; 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(450px,1fr)); 
-    grid-gap: 15px 10px;
+    grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); 
+    grid-gap: 20px 40px;
     
 }
 
@@ -243,10 +243,9 @@
     display: grid; 
     grid-template-rows: auto 1fr;
     border-radius: 15px; 
-    box-shadow: 0 0 15px rgba(0,0,0,0.1); 
-    margin: 2rem 20px; 
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);  
+    margin: auto 2rem;
     overflow: hidden;
-
 }
 
 /* Styles for the dish information container */

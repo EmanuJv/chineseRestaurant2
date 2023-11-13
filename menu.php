@@ -122,7 +122,7 @@ echo "</div>";
 </div>
 
         </div>
-        <!--Main Dishes-->
+        <!--End Main Dishes-->
 
         <!--Desserts-->
 
@@ -151,7 +151,7 @@ echo "</div>";
 ?>
 
         </div>
-        <!--Desserts-->
+        <!--End Desserts-->
 
 
         <!--Beverages-->
@@ -161,86 +161,28 @@ echo "</div>";
         </div>
 
         <div class="menu">
-            <div class="food-items">
-                <img src="./imgs/menu/beverageOne.jpg">
-                <div class="details">
-                    <div class="details-sub">
-                        <h5>BBQ Sandwich</h5>
-                        <h5 class="price"> $10 </h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis nam non quia! Earum
-                        eveniet quia minus nemo.</p>
-                    <a href="./dishInfo.html">Order Now!</a>
-                </div>
-            </div>
+        <?php
 
-            <div class="food-items">
-                <img src="./imgs/menu/BeverageTwo.jpg">
-                <div class="details">
-                    <div class="details-sub">
-                        <h5>BBQ Sandwich</h5>
-                        <h5 class="price"> $10 </h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis nam non quia! Earum
-                        eveniet quia minus nemo.</p>
-                    <a href="./dishInfo.html">Order Now!</a>
-                </div>
-            </div>
-
-            <div class="food-items">
-                <img src="./imgs/menu/beverageThree.jpg">
-                <div class="details">
-                    <div class="details-sub">
-                        <h5>BBQ Sandwich</h5>
-                        <h5 class="price"> $10 </h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis nam non quia! Earum
-                        eveniet quia minus nemo.</p>
-                    <a href="./dishInfo.html">Order Now!</a>
-                </div>
-            </div>
-
-            <div class="food-items">
-                <img src="./imgs/menu/beverageFour.png">
-                <div class="details">
-                    <div class="details-sub">
-                        <h5>BBQ Sandwich</h5>
-                        <h5 class="price"> $10 </h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis nam non quia! Earum
-                        eveniet quia minus nemo.</p>
-                    <a href="./dishInfo.html">Order Now!</a>
-                </div>
-            </div>
-
-            <div class="food-items">
-                <img src="./imgs/menu/beverageFive.png">
-                <div class="details">
-                    <div class="details-sub">
-                        <h5>BBQ Sandwich</h5>
-                        <h5 class="price"> $10 </h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis nam non quia! Earum
-                        eveniet quia minus nemo.</p>
-                    <a href="./dishInfo.html">Order Now!</a>
-                </div>
-            </div>
-
-            <div class="food-items">
-                <img src="./imgs/menu/beverageSix.png">
-                <div class="details">
-                    <div class="details-sub">
-                        <h5>BBQ Sandwich</h5>
-                        <h5 class="price"> $10 </h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis nam non quia! Earum
-                        eveniet quia minus nemo.</p>
-                    <a href="./dishInfo.html">Order Now!</a>
-                </div>
-            </div>
-
+foreach ($items as $item) {
+if ($item["id_category"] == 4) {
+echo "<div class='food-items'>";
+echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+echo "<div class='details'>";
+echo "<div class='details-sub'>";
+echo "<h5>" . $item["dish_name"] . "</h5>";
+echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+echo "</div>";
+echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+echo "</div>";
+echo "</div>";
+}
+}
+?>
         </div>
-        <!--Beverages-->
+
+        <!-- End Beverages-->
+
         <div class="img-animated-container">
             <img class="img-animated" src="./imgs/menu/animatedPic.jpg" alt="Imagen Animada">
             <p class="menu-decoration-text">

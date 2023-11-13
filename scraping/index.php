@@ -3,14 +3,14 @@
 
     include('simple_html_dom.php');
     //link
-    $link =     "https://www.allrecipes.com/recipes/79/desserts/";
+    $link =     "https://www.allrecipes.com/recipes/77/drinks/";
 
     $filenames = [];
     $menu_item_names = [];
     $menu_item_descriptions = [];
     $image_urls = [];
 
-    $menu_items = 10;
+    $menu_items = 6;
 
     $items = file_get_html($link);
 
@@ -71,21 +71,21 @@
        
     }
 
-    //get and download images
+    /*//get and download images
      foreach ($filenames as $index=>$image){
         file_put_contents("../imgs/imgsSC/".$image.".jpg", file_get_contents($image_urls[$index]));
      }
 
 
-    for ($i = 0; $i < 10; $i++) {
+    /*for ($i = 0; $i < 6; $i++) {
         $database->insert("tb_dishes", [
             "dish_name" => $menu_item_names[$i],
             "dish_image" => $filenames[$i] . ".jpg",
             "featured" => 0,
-            "id_category" => 3,
+            "id_category" => 4,
             "description" => $menu_item_descriptions[$i],
             "price" => rand(1 * 10, 70 * 10) / 10
         ]);
     }
     ?>
-?>
+?>*/

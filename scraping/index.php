@@ -71,13 +71,13 @@
        
     }
 
-    /*//get and download images
-     foreach ($filenames as $index=>$image){
+    //get and download images
+    /* foreach ($filenames as $index=>$image){
         file_put_contents("../imgs/imgsSC/".$image.".jpg", file_get_contents($image_urls[$index]));
      }
 
 
-    /*for ($i = 0; $i < 6; $i++) {
+    for ($i = 0; $i < 6; $i++) {
         $database->insert("tb_dishes", [
             "dish_name" => $menu_item_names[$i],
             "dish_image" => $filenames[$i] . ".jpg",
@@ -88,4 +88,4 @@
         ]);
     }
     ?>
-?>*/
+?>

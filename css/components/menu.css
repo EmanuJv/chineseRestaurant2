@@ -1,9 +1,3 @@
-/* Styles for images within elements with the class .food-items */
-.food-items img {
-    position: relative; 
-    width: 100%; 
-    border-radius: 15px 15px 0 0;
-}
 
 /* Styles for elements with the class .details */
 .details {
@@ -41,6 +35,20 @@
 
 /* Styles for links within elements with the class .details */
 .details > a {
+    background-color: #cb202d; 
+    border: none; 
+    color: #ffffff; 
+    font-size: 16px; 
+    font-weight: 600; 
+    border-radius: 5px; 
+    width: 180px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    display: flex; 
+    padding: 1rem; 
+}
+
+.order-now{
     background-color: #cb202d; 
     border: none; 
     color: #ffffff; 

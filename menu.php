@@ -57,7 +57,7 @@
 
         <!--Appetizers-->
 
-        <div class="cta-menu-icon">0
+        <div class="cta-menu-icon">
             <h2 class="menuTxtCategories">Appetizers</h2>
         </div>
 
@@ -66,7 +66,7 @@
         <?php
 
 foreach ($items as $item) {
-    if ($item["category"] == 1) {
+    if ($item["id_category"] == 1) {
     echo "<div class='food-items'>";
     echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
     echo "<div class='details'>";
@@ -102,7 +102,7 @@ foreach ($items as $item) {
 <?php
 
 foreach ($items as $item) {
-if ($item["category"] == 2) {
+if ($item["id_category"] == 2) {
 echo "<div class='food-items'>";
 echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
 echo "<div class='details'>";
@@ -134,7 +134,7 @@ echo "</div>";
         <?php
 
 foreach ($items as $item) {
-if ($item["category"] == 3) {
+if ($item["id_category"] == 3) {
 echo "<div class='food-items'>";
 echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
 echo "<div class='details'>";

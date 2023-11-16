@@ -65,16 +65,16 @@
             "dish_name_ch"=>$_POST["dish_name_ch"],
             "description"=>$_POST["description"],
             "description_ch"=>$_POST["description_ch"],
-           // "category_id"=>$_POST["category_id"],
-            //"dish_featured"=>$_POST["dish_featured"],
-            //"people_category_id"=>$_POST["people_category_id"],
+            "id_category"=>$_POST["id_category"],
+            "featured"=>$_POST["featured"],
+            "id_cat_group"=>$_POST["id_cat_group"],
             "dish_image"=> $img,
             "price"=>$_POST["price"]
         ],[
             "dish_id" => $_POST["id"]
         ]);
 
-        header("location: dish_list.php");
+        header("location: dish-list.php");
         
      }
 ?>
@@ -92,7 +92,7 @@
         <?php 
             echo $message;
         ?>
-        <form method="post" action="edit_dish.php" enctype="multipart/form-data">
+        <form method="post" action="edit-dish.php" enctype="multipart/form-data">
             <div class="form-items">
                 <label for="dish_name">Dish Name</label>
                 <input id="dish_name" class="textfield" name="dish_name" type="text" value="<?php echo $item[0]["dish_name"] ?>">

@@ -117,6 +117,30 @@
 
             <!--<Section Three First Part -->
 
+
+    <?php
+         echo "<section class='food-container'>";
+
+foreach ($items as $item) {
+    if ($item["id_category"] == 1) {
+    echo "<div class='food-items'>";
+    echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+    echo "<div class='details'>";
+    echo "<div class='details-sub'>";
+    echo "<h5>" . $item["dish_name"] . "</h5>";
+    echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+    echo "</div>";
+    echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+    echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+    echo "</div>";
+    echo "</div>";
+    }
+    }
+     echo "</section>";
+
+        ?>
+
+
             <section class="food-container">
 
                 <div class="card">

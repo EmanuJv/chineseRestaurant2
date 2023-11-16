@@ -18,7 +18,7 @@
                 echo "<tr>";
                 echo "<td>".$item["dish_name"]."</td>";
                 //echo "<td>".$item["email"]."</td>";
-                echo "<td><a href='edit_dish.php?id=".$item["dish_id"]."'>Edit</a> <a href='delete-dish.php?id=".$item["dish_id"]."'>Delete</a></td>";
+                echo "<td><a href='edit-dish.php?id=".$item["dish_id"]."'>Edit</a> <a href='delete-dish.php?id=".$item["dish_id"]."'>Delete</a></td>";
                 echo "</tr>";
             }
         ?>

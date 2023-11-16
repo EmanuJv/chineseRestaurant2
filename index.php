@@ -1,3 +1,9 @@
+<?php
+    require_once './database.php';
+    // Reference: https://medoo.in/api/select
+    $items = $database->select("tb_dishes","*");
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,408 +124,55 @@
             <!--<Section Three First Part -->
 
 
+ 
+
     <?php
-         echo "<section class='food-container'>";
+        echo "<section class='food-container'>";
+        foreach ($items as $item){
+            if($item["featured"]==1){
+                echo "<div class='card'>";
+                echo "<div class='top-card'>";
+                echo "<div class='boton-modal'>";
+                echo "<label for='btn-modal-uno'>";
+                echo "BUY";
+                echo "</label>";
+                echo "</div>";
+                echo "<input type='checkbox' id='btn-modal-uno'>";
+                echo "<div class='container-modal'>";
+                echo "<div class='content-modal'>";
+                echo "<div class='superior-info-modal'>";
+                echo "<h5>" . $item["dish_name"] . "</h5>";
+                echo "<div class='info-modal'>";
+                echo "<img class='icon-persons' src='./imgs/familiar.png' alt='modalCart'>";
+                echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+                echo "</div>";
+                echo "</div>";
+                echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                echo "<div class='cta-price-orderNow'>";
+                echo "<a class='btn-price-modal' href=''>$12</a>";
+                echo "<a class='btn-order-modal' href='./dishInfo.html'>Order Now!</a>";
+                echo "</div>";
+                echo "<div class='btn-close'>";
+                echo "<label for='btn-modal-uno'>Close</label>";
+                echo "</div>";
+                echo "</div>";
+                echo "<label for='btn-modal-uno' class='close-modal'></label>";
+                echo "</div>";
+                echo "</div>";
+                echo "<div class='recipe-thumb'>";
+                echo "<h5>" . $item["dish_name"] . "</h5>";echo "<img class='recipe-image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                echo "<a class='btn recipe-name' href='#'>Broccoli with Special Chicken</a>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+        }
+       
+        echo "</section>";
+    ?>
 
-foreach ($items as $item) {
-    if ($item["id_category"] == 1) {
-    echo "<div class='food-items'>";
-    echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-    echo "<div class='details'>";
-    echo "<div class='details-sub'>";
-    echo "<h5>" . $item["dish_name"] . "</h5>";
-    echo "<h5 class='price'>$" . $item["price"] . "</h5>";
-    echo "</div>";
-    echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
-    echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-    echo "</div>";
-    echo "</div>";
-    }
-    }
-     echo "</section>";
+     
 
-        ?>
-
-
-            <section class="food-container">
-
-                <div class="card">
-
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-uno">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-uno">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/appetizerTwo.png" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-uno">Close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-uno" class="close-modal"></label>
-                        </div>
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/appetizerTwo.png" alt="RecipeOne">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-
-                </div>
-
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-dos">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-dos">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/mdNine.png" alt=".">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-dos">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-dos" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/mdNine.png" alt="RecipeTwo">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-tres">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-tres">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/mdSix.png" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-tres">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-tres" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/mdSix.png" alt="RecipeThree">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-
-            </section>
-
-            <!--<End Section Three first part-->
-
-            <!--Section Three second part-->
-
-            <section class="food-container">
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-four">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-four">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/dessertOne.jpg" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-four">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-four" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/dessertOne.jpg" alt="RecipeFour">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-
-
-                </div>
-
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-five">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-five">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/dessertTwo.jpg" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-five">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-five" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/dessertTwo.jpg" alt="RecipeFive">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-six">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-six">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/dessertThree.jpg" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-six">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-six" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/dessertThree.jpg" alt="RecipeSix">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-            </section>
-
-            <!--End Section Three second part-->
-
-
-
-            <!--Section Three third part-->
-
-            <section class="food-container">
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-seven">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-seven">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/beverageFour.png" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-seven">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-seven" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        price-orderNow <img class="recipe-image" src="./imgs/menu/beverageFour.png" alt="RecipeSeven">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-eight">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-eight">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/BeverageTwo.jpg" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-eight">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-eight" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/BeverageTwo.jpg" alt="RecipeEight">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top-card">
-
-                        <div class="boton-modal">
-                            <label for="btn-modal-nine">
-                                BUY
-                            </label>
-                        </div>
-                        <input type="checkbox" id="btn-modal-nine">
-                        <div class="container-modal">
-                            <div class="content-modal">
-                                <div class="superior-info-modal">
-                                    <h2>Fruit Salad</h2>
-                                    <div class="info-modal">
-                                        <img class="icon-persons" src="./imgs/familiar.png" alt="modalCart">
-                                        <h3>Salad with apple, papaya and watermelon</h3>
-                                    </div>
-                                </div>
-                                <img class="recipe-image" src="./imgs/menu/beverageThree.jpg" alt="">
-                                <div class="cta-price-orderNow ">
-                                    <a class="btn-price-modal" href="">$12</a>
-                                    <a class="btn-order-modal" href="./dishInfo.html">Order Now!</a>
-                                </div>
-                                <div class="btn-close">
-                                    <label for="btn-modal-nine">close</label>
-                                </div>
-                            </div>
-                            <label for="btn-modal-nine" class="close-modal"></label>
-                        </div>
-                        <!--Fin de window Modal-->
-
-                    </div>
-                    <div class="recipe-thumb">
-                        <img class="recipe-image" src="./imgs/menu/beverageThree.jpg" alt="RecipeEight">
-                        <a class="btn recipe-name" href="#">Broccoli with Special Chicken</a>
-                    </div>
-                </div>
-
-
-
-            </section>
-
-
-            <!--End Section Three third part-->
 
         </section>
 

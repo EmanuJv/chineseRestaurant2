@@ -4,7 +4,7 @@
     $items = $database->select("tb_dishes","*");
     
 ?>
-
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,10 +69,10 @@
 foreach ($items as $item) {
     if ($item["id_category"] == 1) {
     echo "<div class='food-items'>";
-    echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+    
     echo "<div class='details'>";
     echo "<div class='details-sub'>";
-    echo "<h5>" . $item["dish_name"] . "</h5>";
+    echo "<h5>" . $item["dish_name"] . "</h5>";echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
     echo "<h5 class='price'>$" . $item["price"] . "</h5>";
     echo "</div>";
     echo "<p>" . substr($item["description"], 0, 200) . "...</p>";

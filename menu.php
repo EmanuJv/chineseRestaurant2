@@ -61,29 +61,33 @@
             <h2 class="menuTxtCategories">Appetizers</h2>
         </div>
 
-       
+        <div class="menu">
 
-        <?php
-         echo "<div class='menu'>";
+        <div class="menu">
+
+<?php
 
 foreach ($items as $item) {
-    if ($item["id_category"] == 1) {
-    echo "<div class='food-items'>";
-    
-    echo "<div class='details'>";
-    echo "<div class='details-sub'>";
-    echo "<h5>" . $item["dish_name"] . "</h5>";echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-    echo "<h5 class='price'>$" . $item["price"] . "</h5>";
-    echo "</div>";
-    echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
-    echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-    echo "</div>";
-    echo "</div>";
-    }
-    }
-     echo "</div>";
+if ($item["id_category"] == 1) {
+echo "<div class='food-items'>";
+echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+echo "<div class='details'>";
+echo "<div class='details-sub'>";
+echo "<h5>" . $item["dish_name"] . "</h5>";
+echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+echo "</div>";
+echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+echo "</div>";
+echo "</div>";
+}
+}
+?>
 
-        ?>
+
+</div>
+
+        </div>
 
 
        

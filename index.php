@@ -160,8 +160,8 @@
                 echo "</div>";
                 echo "</div>";
                 echo "<div class='recipe-thumb'>";
-                echo "<h5>" . $item["dish_name"] . "</h5>";echo "<img class='recipe-image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-                echo "<a class='btn recipe-name' href='#'>Broccoli with Special Chicken</a>";
+                echo "<h5>"  . "</h5>";echo "<img class='recipe-image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                echo "<h5 class='recipe-name'>" . $item["dish_name"] . "</h5>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";

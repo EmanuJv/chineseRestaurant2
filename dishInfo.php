@@ -1,39 +1,56 @@
 <?php
     require_once './database.php';
+
+    $lang = "CH";
+
+    $url_params = "";
     
     if($_GET){
-        // Reference: https://medoo.in/api/where
-        /*$item = $database->select("tb_destinations","*",[
-            "id_destination"=>$_GET["id"]
-        ]);*/
 
-        // Reference: https://medoo.in/api/select
-        // Note: don't delete the [>] 
-        $item = $database->select("tb_dishes",[
-            "[>]tb_group_categories"=>["id_cat_group" => "id_cat_group"],
-            "[>]tb_categories"=>["id_category" => "id_category"]
-        ],[
-            "tb_dishes.id_dish",
-            "tb_dishes.dish_name",
-            "tb_dishes.dish_image",
-            "tb_dishes.category",
-            "tb_dishes.featured",
-            "tb_dishes.description",
-            "tb_dishes.capacity",
-            "tb_dishes.price",
-            "tb_dishes.id_category",
-            "tb_dishes.id_cat_group",
-            "tb_categories.category_name",
-            "tb_categories.category_description",
-        ],[
-            "id_dish"=>$_GET["id"]
-        ]);
+        if(isset($_GET["lang"]) && $_GET["lang"] == "ch"){
+            $item = $database->select("tb_dishes",[
+                "[>]tb_categories"=>["id_category" => "id_category"]
+            ],[
+                "tb_dishes.dish_id",
+                "tb_dishes.dish_name_ch",
+                "tb_dishes.description_ch",
+                "tb_dishes.dish_image",
+                "tb_dishes.price",
+                "tb_categories.category_name",
+                "tb_categories.description",
+            ],[
+                "dish_id"=>$_GET["id"]
+            ]);
 
-        //
+            //references
+            $item[0]["dish_name"] = $item[0]["dish_name_ch"];
+            $item[0]["destination_description"] =  $item[0]["description_ch"];
 
-        // Reference: https://medoo.in/api/select
+            $lang = "EN";
+            $url_params = "?id=".$item[0]["dish_id"];
+        }else{
+            $item = $database->select("tb_dishes",[
+                "[>]tb_categories"=>["id_category" => "id_category"]
+            ],[
+                "tb_dishes.dish_id",
+                "tb_dishes.dish_name",
+                "tb_dishes.dish_name_ch",
+                "tb_dishes.description",
+                "tb_dishes.description_ch",
+                "tb_dishes.dish_image",
+                "tb_dishes.price",
+                "tb_categories.category_name",
+                "tb_categories.category_description"
+            ],[
+                "dish_id"=>$_GET["id"]
+            ]);
+
+            $lang = "CH";
+            $url_params = "?id=".$item[0]["dish_id"]."&lang=ch";
+        }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +76,7 @@
             <p class="nav-title">Shípǔ</p>
 
             <!-- Mobile Menu Button (Controlled by Checkbox) -->
-            <input class="mobile-cb" type="checkbox">3
+            <input class="mobile-cb" type="checkbox">
             <label class="mobile-btn">
                 <span></span>
             </label>
@@ -79,33 +96,27 @@
 
     <!-- main content  -->
     <main>
-        <div class="dishInfo-container">
-            <h2>Sweet and Sour Chicken</h2> <!-- dish title -->
+        <?php 
+             echo "<div class='dishInfo-container'>";
+             echo "<h2>" . $item[0]["dish_name"] . "</h2>";
+               echo "<div class='infoImageDish'>";
+               echo "<img class='infoImage' src='./imgs/" . $item[0]["dish_image"] . "'>";
+               echo "<p>".$item[0]["description"]."</p>";
+               echo "</div>";
+               echo "<div class='dishInfoDetails'>";
+               echo "<h5>Main Dish</h5>";
+               echo "<h5>Related Dishes</h5>";
+               echo "<h5>Featured Dish</h5>";
+               echo "</div>";
+               echo "<div class='infoPrice'>";
+               echo "<span>$".$item[0]["price"]."</span>";
+               echo "<a class='btn btn-order-dish' href='menu.php'>Go To Menu</a>";
+               echo "<a class='btn btn-order-dish' href='cart.html?id=".$item[0]["dish_id"]."'>Add To Cart!</a>";
+               echo "</div>";
+               echo "</div>";
+        ?>
             
-            <!-- info and Image container -->
-            <div class="infoImageDish">
-                <img class="infoImage" src="./imgs/menu/appetizerTwo.png" alt="appetizer">
-                <!-- Image-->
-                <p>Sweet and Sour Chicken is a classic in Chinese cuisine that harmoniously blends contrasting flavors into one dish. Tender chicken pieces are </p>
-                <!-- description -->
-            </div>
 
-            <!-- Dish details -->
-            <div class="dishInfoDetails">
-                <h5>Main Dish</h5> 
-                <h5>Related Dishes</h5>
-                <h5>Featured Dish</h5> 
-                <img class="icon-persons" src="./imgs/familiar.png" alt="familiar">
-
-            </div>
-
-            <!-- Price and button -->
-            <div class="infoPrice">
-                <p>$12</p> 
-                <a href="./menu.html" class="btn-order-dish btn">Go To Menu</a> 
-                <a href="#" class="btn-order-dish btn">Add To Cart!</a> 
-            </div>
-        </div>
     </main>
 </body>
 </html>

@@ -267,6 +267,7 @@
 /* Styles for images in the dish information container */
 .infoImageDish img {
     border-radius: 1rem;
+    width: 30vw;
 }
 
 /* Styles for the price in the dish information container */
@@ -336,6 +337,10 @@
     height: 375px;
     object-fit: cover;
 }
+
+
+
+
 
 
 

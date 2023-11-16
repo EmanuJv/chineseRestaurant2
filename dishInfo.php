@@ -100,7 +100,7 @@
              echo "<div class='dishInfo-container'>";
              echo "<h2>" . $item[0]["dish_name"] . "</h2>";
                echo "<div class='infoImageDish'>";
-               echo "<img class='infoImage' src='./imgs/" . $item[0]["dish_image"] . "'>";
+               echo "<img class='infoImage' src='./imgs/imgsSC/" . $item[0]["dish_image"] . "'>";
                echo "<p>".$item[0]["description"]."</p>";
                echo "</div>";
                echo "<div class='dishInfoDetails'>";

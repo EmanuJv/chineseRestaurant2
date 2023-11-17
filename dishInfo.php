@@ -72,7 +72,7 @@
         <!-- Top navigation bar -->
         <nav class="top-nav">
             <!--Logo and title -->
-            <a href="./index.html"><img class="logo" src="./imgs/logoOscuro.png" alt="Shipu Logo"></a>
+            <a href="./index.php"><img class="logo" src="./imgs/logoOscuro.png" alt="Shipu Logo"></a>
             <p class="nav-title">Shípǔ</p>
 
             <!-- Mobile Menu Button (Controlled by Checkbox) -->
@@ -84,7 +84,7 @@
             <!-- navigation list -->
             <ul class="nav-list">
                 <li><a class="nav-list-link" href="./history.html">USER HISTORY</a></li>
-                <li><a class="nav-list-link" href="./menu.html">MENU</a></li>
+                <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
                 <li><a class="nav-list-link" href="./cart.html">CART</a></li>
                 <li><a class="nav-list-link" href="./register.html">SIGN UP</a></li>
                 <li><a class="nav-list-link" href="./login.html">LOGIN</a></li>
@@ -110,8 +110,8 @@
                echo "</div>";
                echo "<div class='infoPrice'>";
                echo "<span>$".$item[0]["price"]."</span>";
-               echo "<a class='btn btn-order-dish' href='menu.php'>Go To Menu</a>";
-               echo "<a class='btn btn-order-dish' href='cart.html?id=".$item[0]["dish_id"]."'>Add To Cart!</a>";
+               echo "<a class='btn btn-order-dish' href='menu.php'>Menu</a>";
+               echo "<a class='btn btn-order-dish' href='cart.php?id=".$item[0]["dish_id"]."'>BUY</a>";
                echo "</div>";
                echo "</div>";
         ?>

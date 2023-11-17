@@ -131,6 +131,7 @@
     transition: background-color 0.3s;
     cursor: pointer; 
     margin: auto;
+    
 }
 
 /* Styles for .btn-order-dish button when hovering */

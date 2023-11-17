@@ -267,14 +267,14 @@
 /* Styles for images in the dish information container */
 .infoImageDish img {
     border-radius: 1rem;
-    width: 30vw;
+    width: 24vw;
 }
 
 /* Styles for the price in the dish information container */
 .infoPrice {
     margin: 3rem 0; 
     display: flex; 
-    font-size: 3rem; 
+    font-size: 2rem; 
     gap: 1rem;
 }
 
@@ -358,6 +358,8 @@
     .infoImage {
         width: 60vw; 
     }
+
+
     .img-animated {
         width: 18vw; 
     }

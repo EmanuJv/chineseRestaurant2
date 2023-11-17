@@ -49,7 +49,7 @@
 
         <!--Buttons to cancel or pay the order -->
         <div class="orderBtns-container">
-            <a href="./index.html" class="btn-order-modal btn">Cancel Order</a>
+            <a href="./menu.php" class="btn-order-modal btn">Cancel Order</a>
             <a href="#" class="btn-order-modal btn">PayOut</a>
         </div>
     </main>

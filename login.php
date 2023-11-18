@@ -1,3 +1,32 @@
+<?php
+require_once './database.php';
+$message = "";
+$messageLogin = "";
+
+if ($_POST) {
+
+    if (isset($_POST["login"])) {
+        $user = $database->select("tb_customers", "*", [
+            "username" => $_POST["username"]
+        ]);
+
+        if (count($user) > 0) {
+            if (password_verify($_POST["password"], $user[0]["pass"])) {
+                session_start();
+                $_SESSION["isLoggedIn"] = true;
+                $_SESSION["fullname"] = $user[0]["fullname"];
+                header("location: index.php");
+            } else {
+                $messageLogin = "wrong username or password";
+            }
+        } else {
+            $messageLogin = "wrong username or password";
+        }
+
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,24 +70,40 @@
     </header>
 
     <!--Register-->
+
+
     <main>
         <div class="register-container">
             <h2 class="register-welcome">Welcome!</h2>
 
-            <form class="register-form">
-                <label class="lb-register">FullName:</label>
-                <input class="inpt-register" type="text" placeholder="">
-            </form>
-            <form class="register-form">
-                <label class="lb-register">Email:</label>
-                <input class="inpt-register" type="text" placeholder="">
-            </form>
+            <form method="post" action="login.php" class="register-form">
+                <div>
+                    <label class='lb-register' for='username'>Username</label>
+                </div>
+                <div>
+                    <input id='username' class='inpt-register' type='text' name='username'>
+                </div>
 
-            <a href="#" class="btn-login btn">Log In</a>
 
-            <a class="link-register" href="./register.html">Don't have any account?</a>
+                <div>
+                    <label class='lb-register' for='password'>Password</label>
+                </div>
+                <div>
+                    <input id='password' class='inpt-register' type='password' name='password'>
 
+                </div>
+
+                <div class="btn-forms-info">
+                    <input class='inpt-register btn-login btn' type='submit' value="LOGIN">
+
+                    <p>
+                        <?php echo $messageLogin; ?>
+                    </p>
+
+                    <input type="hidden" name="login" value="1">
+                </div>
         </div>
+        </form>
     </main>
 </body>
 

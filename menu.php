@@ -39,8 +39,8 @@
                 <li><a class="nav-list-link" href="./history.html">USER HISTORY</a></li>
                 <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
                 <li><a class="nav-list-link" href="./cart.html">CART</a></li>
-                <li><a class="nav-list-link" href="./register.html">SIGN UP</a></li>
-                <li><a class="nav-list-link" href="./login.html">LOGIN</a></li>
+                <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
+                <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
             </ul>
 
 

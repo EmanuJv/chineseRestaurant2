@@ -59,10 +59,10 @@ if ($_POST) {
             <!--Navigation list-->
             <ul class="nav-list">
                 <li><a class="nav-list-link" href="./history.html">USER HISTORY</a></li>
-                <li><a class="nav-list-link" href="./menu.html">MENU</a></li>
+                <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
                 <li><a class="nav-list-link" href="./cart.html">CART</a></li>
-                <li><a class="nav-list-link" href="./register.html">SIGN UP</a></li>
-                <li><a class="nav-list-link" href="./login.html">LOGIN</a></li>
+                <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
+                <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
             </ul>
 
 
@@ -91,9 +91,12 @@ if ($_POST) {
                 <div>
                     <input id='password' class='inpt-register' type='password' name='password'>
 
+
                 </div>
 
                 <div class="btn-forms-info">
+                    <a class="link-login" href="./register.php">have you forgotten your password?</a>
+
                     <input class='inpt-register btn-login btn' type='submit' value="LOGIN">
 
                     <p>

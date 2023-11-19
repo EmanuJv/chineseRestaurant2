@@ -150,7 +150,7 @@
     border-radius: 4rem; 
     background: hsla(0, 0%, 18%, 90%); 
     overflow: auto; 
-    gap: 4rem;
+    gap: 1rem;
     justify-content: center; 
 }
 
@@ -337,6 +337,7 @@
     height: 375px;
     object-fit: cover;
 }
+
 
 
 

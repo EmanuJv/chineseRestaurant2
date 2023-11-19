@@ -11,7 +11,7 @@ if ($_POST) {
         ]);
 
         if (count($user) > 0) {
-            if (password_verify($_POST["password"], $user[0]["pass"])) {
+            if (password_verify($_POST["pass"], $user[0]["pass"])) {
                 session_start();
                 $_SESSION["isLoggedIn"] = true;
                 $_SESSION["fullname"] = $user[0]["fullname"];
@@ -44,7 +44,7 @@ if ($_POST) {
 
     <header>
         <nav class="top-nav">
-            <a href="./index.html"><img class="logo" src="./imgs/logoOscuro.png" alt="Shipu Logo"></a>
+            <a href="./index.php"><img class="logo" src="./imgs/logoOscuro.png" alt="Shipu Logo"></a>
             <p class="nav-title">Shípǔ</p>
 
             <!--mobile nav btn (camping extracted)-->

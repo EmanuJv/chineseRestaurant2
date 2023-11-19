@@ -20,7 +20,7 @@ if (isset($_POST["register"])) {
             "email" => $_POST["email"]
         ]);
 
-        //  header("location: book.php?id=".$_POST["register"]);
+         header("location: login.php?id=".$_POST["register"]);
     }
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST["register"])) {
 
     <header>
         <nav class="top-nav">
-            <a href="./index.html"><img class="logo" src="./imgs/logoOscuro.png" alt="Shipu Logo"></a>
+            <a href="./index.php"><img class="logo" src="./imgs/logoOscuro.png" alt="Shipu Logo"></a>
 
             <p class="nav-title">Shípǔ</p>
 
@@ -102,7 +102,7 @@ if (isset($_POST["register"])) {
                 </div>
                 <div class='form-items'>
                     <div>
-                        <label class='lb-register' for='password'>Password</label>
+                        <label class='lb-register' for='pass'>Password</label>
                     </div>
                     <div>
                         <input id='password' class='inpt-register' type='password' name='password'>

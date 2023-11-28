@@ -1,10 +1,13 @@
 <?php
-    require_once './database.php';
-    // Reference: https://medoo.in/api/select
-    $items = $database->select("tb_dishes","*");
-    
+require_once './database.php';
+// Reference: https://medoo.in/api/select
+$items = $database->select("tb_dishes", "*");
+
+// Reference: https://medoo.in/api/select
+$categories = $database->select("tb_categories", "*");
+
 ?>
-  
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +58,23 @@
             <p class="phras-text">"Gastronomy is the art of using food to create happiness"</p>
         </div>
 
+
+        <form class="menu">
+
+            <select name="category" id="id_category" class="btn btn-order-dish">
+                <?php
+                foreach ($categories as $category) {
+                    echo "<option value='" . $category["id_category"] . "'>" . $category["category_name"] . "</option>";
+                }
+                ?>
+            </select>
+            <input id="search" type="button" class="btn btn-order-dish" value="SEARCH CATEGORY" onclick="getFilters()">
+        </form>
+        </div>
+        <p id='found' class='activity-title'></p>
+
+
+
         <!--Appetizers-->
 
         <div class="cta-menu-icon">
@@ -63,37 +83,37 @@
 
         <div class="menu">
 
-        <div class="menu">
+            <div class="menu">
 
-<?php
+                <?php
 
-foreach ($items as $item) {
-if ($item["id_category"] == 1) {
-echo "<div class='food-items'>";
-echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-echo "<div class='details'>";
-echo "<div class='details-sub'>";
-echo "<h5>" . $item["dish_name"] . "</h5>";
-echo "<h5 class='price'>$" . $item["price"] . "</h5>";
-echo "</div>";
-echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
-echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-echo "</div>";
-echo "</div>";
-}
-}
-?>
+                foreach ($items as $item) {
+                    if ($item["id_category"] == 1) {
+                        echo "<div class='food-items'>";
+                        echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                        echo "<div class='details'>";
+                        echo "<div class='details-sub'>";
+                        echo "<h5>" . $item["dish_name"] . "</h5>";
+                        echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+                        echo "</div>";
+                        echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+                        echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
 
 
-</div>
+            </div>
 
         </div>
 
 
-       
+
         <!--Appetizers-->
 
-        
+
 
         <!--Main Dishes-->
 
@@ -103,29 +123,29 @@ echo "</div>";
 
         <div class="menu">
 
-        <div class="menu">
+            <div class="menu">
 
-<?php
+                <?php
 
-foreach ($items as $item) {
-if ($item["id_category"] == 2) {
-echo "<div class='food-items'>";
-echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-echo "<div class='details'>";
-echo "<div class='details-sub'>";
-echo "<h5>" . $item["dish_name"] . "</h5>";
-echo "<h5 class='price'>$" . $item["price"] . "</h5>";
-echo "</div>";
-echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
-echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-echo "</div>";
-echo "</div>";
-}
-}
-?>
+                foreach ($items as $item) {
+                    if ($item["id_category"] == 2) {
+                        echo "<div class='food-items'>";
+                        echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                        echo "<div class='details'>";
+                        echo "<div class='details-sub'>";
+                        echo "<h5>" . $item["dish_name"] . "</h5>";
+                        echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+                        echo "</div>";
+                        echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+                        echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
 
 
-</div>
+            </div>
 
         </div>
         <!--End Main Dishes-->
@@ -137,24 +157,24 @@ echo "</div>";
         </div>
         <div class="menu">
 
-        <?php
+            <?php
 
-foreach ($items as $item) {
-if ($item["id_category"] == 3) {
-echo "<div class='food-items'>";
-echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-echo "<div class='details'>";
-echo "<div class='details-sub'>";
-echo "<h5>" . $item["dish_name"] . "</h5>";
-echo "<h5 class='price'>$" . $item["price"] . "</h5>";
-echo "</div>";
-echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
-echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-echo "</div>";
-echo "</div>";
-}
-}
-?>
+            foreach ($items as $item) {
+                if ($item["id_category"] == 3) {
+                    echo "<div class='food-items'>";
+                    echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                    echo "<div class='details'>";
+                    echo "<div class='details-sub'>";
+                    echo "<h5>" . $item["dish_name"] . "</h5>";
+                    echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+                    echo "</div>";
+                    echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+                    echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            }
+            ?>
 
         </div>
         <!--End Desserts-->
@@ -167,24 +187,24 @@ echo "</div>";
         </div>
 
         <div class="menu">
-        <?php
+            <?php
 
-foreach ($items as $item) {
-if ($item["id_category"] == 4) {
-echo "<div class='food-items'>";
-echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-echo "<div class='details'>";
-echo "<div class='details-sub'>";
-echo "<h5>" . $item["dish_name"] . "</h5>";
-echo "<h5 class='price'>$" . $item["price"] . "</h5>";
-echo "</div>";
-echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
-echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-echo "</div>";
-echo "</div>";
-}
-}
-?>
+            foreach ($items as $item) {
+                if ($item["id_category"] == 4) {
+                    echo "<div class='food-items'>";
+                    echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                    echo "<div class='details'>";
+                    echo "<div class='details-sub'>";
+                    echo "<h5>" . $item["dish_name"] . "</h5>";
+                    echo "<h5 class='price'>$" . $item["price"] . "</h5>";
+                    echo "</div>";
+                    echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+                    echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            }
+            ?>
         </div>
 
         <!-- End Beverages-->
@@ -248,12 +268,100 @@ echo "</div>";
         <section class="download-app">
             <h3>Download our App</h3>
             <div class="cta-app-container">
-                <a class = "download" href="#"><img src="./imgs/app-store.png" alt="Our app from App Store"></a>
+                <a class="download" href="#"><img src="./imgs/app-store.png" alt="Our app from App Store"></a>
                 <a href="#"><img src="./imgs/google-play.png" alt="Our app from Google Play"></a>
             </div>
         </section>
         <p class="footer-legal">&copy; 2023. All rights reserved.</p>
     </footer>
+
+    <script>
+
+        function getFilters() {
+
+            let info = {
+                category: document.getElementById("id_category").value
+            };
+
+            //fetch
+            fetch("http://localhost/chineserestaurant2/response.php", {
+                method: "POST",
+                mode: "same-origin",
+                credentials: "same-origin",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify(info)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    //console.log(data);
+
+                    let found = document.getElementById("found");
+                    found.innerText = "We found: " + data.length + " dishes(s)";
+
+                    if (document.getElementById("items") !== null) document.getElementById("items").remove();
+
+                    if (data.length > 0) {
+
+                        //let container = document.getElementById("items");
+                        let container = document.createElement("div");
+                        container.setAttribute("id", "items");
+                        container.classList.add("activities-container");
+                        document.getElementById("dishes").appendChild(container);
+
+                        data.forEach(function (item) {
+
+                            let dish = document.createElement("section");
+                            dish.classList.add("activity");
+                            container.appendChild(dish);
+                            //thumb
+                            let thumb = document.createElement("div");
+                            thumb.classList.add("activity-thumb");
+                            dish.appendChild(thumb);
+                            //create image
+                            let image = document.createElement("img");
+                            image.classList.add("activity-image");
+                            image.setAttribute("src", './imgs/' + item.dish_image);
+                            image.setAttribute("alt", item.dish_name);
+                            thumb.appendChild(image);
+                            //like button
+                            let button = document.createElement("button");
+                            button.classList.add("like-btn");
+                            thumb.appendChild(button);
+                            //like button image
+                            let btnImage = document.createElement("img");
+                            btnImage.setAttribute("src", './imgs/icons/like.svg');
+                            btnImage.setAttribute("alt", "like");
+                            button.appendChild(btnImage);
+                            //price
+                            let price = document.createElement("span");
+                            price.classList.add("activity-price");
+                            price.innerText = "$" + item.price + "/night";
+                            thumb.appendChild(price);
+                            //description
+                            let description = document.createElement("p");
+                            description.classList.add("activity-text");
+                            description.innerText = item.description.substr(1, 70) + "...";
+                            destination.appendChild(description);
+                            //link
+                            let link = document.createElement("a");
+                            link.classList.add("btn");
+                            link.classList.add("read-btn");
+                            link.setAttribute("href", "dish.php?id=" + item.id_destination);
+                            link.innerText = "View Details";
+                            destination.appendChild(link);
+                        });
+                    }
+
+                })
+                .catch(err => console.log("error: " + err));
+
+        }
+    </script>
+
+
 </body>
 
 </html>

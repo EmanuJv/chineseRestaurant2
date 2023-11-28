@@ -14,7 +14,7 @@ if ($_POST) {
             if (password_verify($_POST["pass"], $user[0]["pass"])) {
                 session_start();
                 $_SESSION["isLoggedIn"] = true;
-                $_SESSION["fullname"] = $user[0]["fullname"];
+                $_SESSION["username"] = $user[0]["username"];
                 header("location: index.php");
             } else {
                 $messageLogin = "wrong username or password";

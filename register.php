@@ -20,7 +20,7 @@ if (isset($_POST["register"])) {
             "email" => $_POST["email"]
         ]);
 
-         header("location: login.php?id=".$_POST["register"]);
+         header("location: menu.php?id=".$_POST["register"]);
     }
 }
 

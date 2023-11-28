@@ -101,7 +101,7 @@
 
 
         <div class="cta-container">
-            <a href="./menu.html" class="btn go-to-menu-btn">Go to Menu</a>
+            <a href="./menu.php" class="btn go-to-menu-btn">Go to Menu</a>
         </div>
 
 
@@ -184,7 +184,7 @@
         <div class="register-invitation-cta">
             <section class="register-invitation-content">
                 <h2 class="register-invitation-title">Register and order our delicious dishes!</h2>
-                <a href="./register.html" class="btn register-invitation-btn">Register</a>
+                <a href="./register.php" class="btn register-invitation-btn">Register</a>
             </section>
             <div>
                 <img class="register-invitation-image" src="./imgs/register-invitation-img.jpg"

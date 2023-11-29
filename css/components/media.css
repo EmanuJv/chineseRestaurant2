@@ -12,6 +12,11 @@
     margin-left: 50%; 
     border-radius: 0 4.5rem 4.5rem 0; 
 }
+.imageSearch{
+    display: block;
+    width: 100%;
+    border-radius: 1rem;   
+}
 
 /* Styles for elements with the class .recipe-image */
 .recipe-image {

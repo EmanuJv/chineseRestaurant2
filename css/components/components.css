@@ -19,3 +19,15 @@
 .link-login:hover {
     color: var(--clr-main); 
 }
+.btnSe{
+    display: block;
+    width: 50%;
+    margin: auto;
+    background: var(--clr-gray);
+    color: var(--clr-gray-txt);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: all .3s ease-in-out;
+}
+
+

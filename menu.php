@@ -71,7 +71,7 @@ $categories = $database->select("tb_categories", "*");
             <input id="search" type="button" class="btn btn-order-dish" value="SEARCH CATEGORY" onclick="getFilters()">
         </form>
         </div>
-        <p id='found' class='activity-title'></p>
+        <p id='found' class='textSe'></p>
 
 
 
@@ -305,53 +305,43 @@ $categories = $database->select("tb_categories", "*");
 
                     if (data.length > 0) {
 
-                        //let container = document.getElementById("items");
                         let container = document.createElement("div");
                         container.setAttribute("id", "items");
-                        container.classList.add("activities-container");
+                        container.classList.add("container-se");
                         document.getElementById("dishes").appendChild(container);
 
                         data.forEach(function (item) {
 
                             let dish = document.createElement("section");
-                            dish.classList.add("activity");
+                            dish.classList.add("dishse");
                             container.appendChild(dish);
                             //thumb
                             let thumb = document.createElement("div");
-                            thumb.classList.add("activity-thumb");
+                            thumb.classList.add("dishes-thumb");
                             dish.appendChild(thumb);
                             //create image
                             let image = document.createElement("img");
-                            image.classList.add("activity-image");
+                            image.classList.add("imageSearch");
                             image.setAttribute("src", './imgs/' + item.dish_image);
                             image.setAttribute("alt", item.dish_name);
                             thumb.appendChild(image);
-                            //like button
-                            let button = document.createElement("button");
-                            button.classList.add("like-btn");
-                            thumb.appendChild(button);
-                            //like button image
-                            let btnImage = document.createElement("img");
-                            btnImage.setAttribute("src", './imgs/icons/like.svg');
-                            btnImage.setAttribute("alt", "like");
-                            button.appendChild(btnImage);
                             //price
                             let price = document.createElement("span");
-                            price.classList.add("activity-price");
+                            price.classList.add("priceSE");
                             price.innerText = "$" + item.price + "/night";
                             thumb.appendChild(price);
                             //description
                             let description = document.createElement("p");
-                            description.classList.add("activity-text");
+                            description.classList.add("textSe");
                             description.innerText = item.description.substr(1, 70) + "...";
-                            destination.appendChild(description);
+                            dish.appendChild(description);
                             //link
                             let link = document.createElement("a");
                             link.classList.add("btn");
-                            link.classList.add("read-btn");
-                            link.setAttribute("href", "dish.php?id=" + item.id_destination);
+                            link.classList.add("btnSe");
+                            link.setAttribute("href", "dishInfo.php?id=" + item.dish_id);
                             link.innerText = "View Details";
-                            destination.appendChild(link);
+                            dish.appendChild(link);
                         });
                     }
 

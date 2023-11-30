@@ -47,7 +47,7 @@
 
 /* Defining styles for elements with the .recipe-name class */
 .recipe-name {
-    color: var(--clr-white); 
+    color: black; 
     font-weight: bold; 
     margin: auto; 
     font-size: 25px; 
@@ -55,9 +55,7 @@
 }
 
 /* Styles for the hover state of elements with the .recipe-name class */
-.recipe-name:hover {
-    color: var(--clr-gray-txt); 
-}
+
 
 /* Defining styles for elements with the .register-invitation-title class */
 .register-invitation-title {

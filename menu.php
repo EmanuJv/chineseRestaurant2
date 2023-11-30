@@ -76,7 +76,7 @@ $categories = $database->select("tb_categories", "*");
 
 
         <!--Appetizers-->
-
+       
         <div class="cta-menu-icon">
             <h2 class="menuTxtCategories">Appetizers</h2>
         </div>
@@ -100,6 +100,7 @@ $categories = $database->select("tb_categories", "*");
                         echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
                         echo "</div>";
                         echo "</div>";
+                    
                     }
                 }
                 ?>

@@ -18,7 +18,7 @@
     <!-- google fonts -->
     <link rel="stylesheet" href="./css/main.css">
 
-
+    
 
 </head>
 
@@ -44,6 +44,15 @@
                 <li><a class="nav-list-link" href="./cart.html">CART</a></li>
                 <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
                 <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
+                <?php 
+                session_start();
+                if (isset($_SESSION["isLoggedIn"])){
+                    echo "<li><a class='nav-list-link' href='profile.php'>".$_SESSION["fullname"]."</a></li>";
+                    echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
+                }else {
+                    echo " <li><a class='nav-list-link' href='./menu'>Login</a></li>";
+                }
+                ?>
             </ul>
 
 
@@ -133,24 +142,19 @@
                 echo "<div class='card'>";
                 echo "<div class='top-card'>";
                 echo "<div class='boton-modal'>";
-                echo "<label for='btn-modal-uno'>";
-                echo "BUY";
+                echo "<a class='btn-orderNowIndex' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
                 echo "</label>";
                 echo "</div>";
                 echo "<input type='checkbox' id='btn-modal-uno'>";
                 echo "<div class='container-modal'>";
                 echo "<div class='content-modal'>";
                 echo "<div class='superior-info-modal'>";
-                echo "<h5>" . $item["dish_name"] . "</h5>";
                 echo "<div class='info-modal'>";
-                echo "<img class='icon-persons' src='./imgs/familiar.png' alt='modalCart'>";
-                echo "<p>" . substr($item["description"], 0, 200) . "...</p>";
+                echo "<p>" .'Are you sure you want to order this dish?'. "</p>";
                 echo "</div>";
                 echo "</div>";
-                echo "<img class='dish_image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
                 echo "<div class='cta-price-orderNow'>";
-                echo "<a class='btn-price-modal' href=''>$12</a>";
-                echo "<a class='btn-order-modal' href='./dishInfo.html'>Order Now!</a>";
+                echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
                 echo "</div>";
                 echo "<div class='btn-close'>";
                 echo "<label for='btn-modal-uno'>Close</label>";

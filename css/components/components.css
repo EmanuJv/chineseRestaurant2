@@ -19,6 +19,22 @@
 .link-login:hover {
     color: var(--clr-main); 
 }
+.btn-orderNowIndex:hover{
+    color:rgb(138, 5, 5);
+}
+.btn-orderNowIndex{
+    background-color: #000000; 
+    border: none; 
+    color: #ffffff; 
+    font-size: 16px;  
+    border-radius: 10px; 
+    width: 100px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    display: flex; 
+    padding: 1rem;
+}
+
 .btnSe{
     display: block;
     width: 50%;

@@ -12,8 +12,8 @@
     
             $items = $database->select("tb_dishes","*",[
                 "AND"=>[
-                    "id_category" => $decoded
-                    ["category"]
+                    "dish_id" => $decoded
+                    ["item"]
                 ]
             ]);
     

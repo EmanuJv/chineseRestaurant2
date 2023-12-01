@@ -310,7 +310,6 @@
 }
 
 .dishse{
-    display: grid;
     background: (var(--clr-white));
     border-radius: 2rem;
     text-align: center;
@@ -321,6 +320,7 @@
     display: flex;
     position: relative;
     padding: 0 1rem;
+    justify-content: center;
 }
 
 /* Styles for the container of animated images */
@@ -348,7 +348,7 @@
     border-top-left-radius: 1rem;
     padding: 0.5rem 2rem;
     bottom: 0;
-    left: 50%;
+    font-weight: 600;
     transform: translate(-50% 0);
 }
 
@@ -369,6 +369,8 @@
 }
 
 .container-se{
+    text-align: center;
+    justify-content: center; 
     display: grid;
     width: 80vw;
     margin: 2rem auto;

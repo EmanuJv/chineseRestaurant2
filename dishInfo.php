@@ -17,14 +17,14 @@
                 "tb_dishes.dish_image",
                 "tb_dishes.price",
                 "tb_categories.category_name",
-                "tb_categories.description",
+                "tb_categories.category_description",
             ],[
                 "dish_id"=>$_GET["id"]
             ]);
 
             //references
             $item[0]["dish_name"] = $item[0]["dish_name_ch"];
-            $item[0]["destination_description"] =  $item[0]["description_ch"];
+            $item[0]["description"] =  $item[0]["description_ch"];
 
             $lang = "EN";
             $url_params = "?id=".$item[0]["dish_id"];
@@ -88,6 +88,15 @@
                 <li><a class="nav-list-link" href="./cart.php">CART</a></li>
                 <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
                 <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
+                <?php 
+                session_start();
+                if (isset($_SESSION["isLoggedIn"])){
+                    echo "<li><a class='nav-list-link' href='index.php'>".$_SESSION["fullname"]."</a></li>";
+                    echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
+                }else {
+                    echo " <li><a class='nav-list-link' href='./login.php'>Login</a></li>";
+                }
+                ?>
             </ul>
         </nav>
     </header>
@@ -98,6 +107,7 @@
     <main>
         <?php 
              echo "<div class='dishInfo-container'>";
+             echo "<a class='translate' href='dishInfo.php".$url_params."'>".$lang."</a>";
              echo "<h2>" . $item[0]["dish_name"] . "</h2>";
                echo "<div class='infoImageDish'>";
                echo "<img class='infoImage' src='./imgs/imgsSC/" . $item[0]["dish_image"] . "'>";

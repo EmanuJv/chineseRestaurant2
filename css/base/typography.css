@@ -126,6 +126,24 @@
 .textSe{
     font-size: var(--fs-nm);
 }
+.translate{
+    text-decoration: none;
+    text-align: center;
+    width: 5rem;
+    background: var(--clr-main);
+    box-shadow: 5px 5px 10px rgba(0, 0.5, 0.5, 0.5);
+    color: var(--clr-white);
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+    cursor: pointer; 
+}
+
+.translate:hover {
+    background-color: #930f0f;
+}
+
 
 
 /* Defining styles for elements with the .register-invitation-title class on small screens (less than 769px wide) */

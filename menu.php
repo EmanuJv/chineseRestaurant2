@@ -4,7 +4,8 @@ require_once './database.php';
 $items = $database->select("tb_dishes", "*");
 
 // Reference: https://medoo.in/api/select
-$categories = $database->select("tb_categories", "*");
+
+
 
 ?>
 
@@ -39,13 +40,21 @@ $categories = $database->select("tb_categories", "*");
 
             <!--Navigation List-->
             <ul class="nav-list">
-                <li><a class="nav-list-link" href="./history.html">USER HISTORY</a></li>
+                <li><a class="nav-list-link" href="./history.php">USER HISTORY</a></li>
                 <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
-                <li><a class="nav-list-link" href="./cart.html">CART</a></li>
+                <li><a class="nav-list-link" href="./cart.php">CART</a></li>
                 <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
                 <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
+                <?php 
+                session_start();
+                if (isset($_SESSION["isLoggedIn"])){
+                    echo "<li><a class='nav-list-link' href='index.php'>".$_SESSION["fullname"]."</a></li>";
+                    echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
+                }else {
+                    echo " <li><a class='nav-list-link' href='./login.php'>Login</a></li>";
+                }
+                ?>
             </ul>
-
 
         </nav>
     </header>
@@ -58,25 +67,24 @@ $categories = $database->select("tb_categories", "*");
             <p class="phras-text">"Gastronomy is the art of using food to create happiness"</p>
         </div>
 
+        <section>
+            <form class="menu">
 
-        <form class="menu">
-
-            <select name="category" id="id_category" class="btn btn-order-dish">
-                <?php
-                foreach ($categories as $category) {
-                    echo "<option value='" . $category["id_category"] . "'>" . $category["category_name"] . "</option>";
-                }
-                ?>
-            </select>
-            <input id="search" type="button" class="btn btn-order-dish" value="SEARCH CATEGORY" onclick="getFilters()">
-        </form>
-        </div>
-        <p id='found' class='textSe'></p>
-
-
+                <select name="dish" id="dish_id" class="btn btn-order-dish">
+                    <?php
+                    foreach ($items as $item) {
+                        echo "<option value='" . $item["dish_id"] . "'>" . $item["dish_name"] . "</option>";
+                    }
+                    ?>
+                </select>
+                <input id="search" type="button" class="btn btn-order-dish" value="SEARCH DISH" onclick="getFilters()">
+            </form>
+            </div>
+            <p id='found' class='textSe'></p>
+        </section>
 
         <!--Appetizers-->
-       
+
         <div class="cta-menu-icon">
             <h2 class="menuTxtCategories">Appetizers</h2>
         </div>
@@ -100,7 +108,7 @@ $categories = $database->select("tb_categories", "*");
                         echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
                         echo "</div>";
                         echo "</div>";
-                    
+
                     }
                 }
                 ?>
@@ -276,12 +284,15 @@ $categories = $database->select("tb_categories", "*");
         <p class="footer-legal">&copy; 2023. All rights reserved.</p>
     </footer>
 
+
     <script>
 
         function getFilters() {
 
+
+
             let info = {
-                category: document.getElementById("id_category").value
+                item: document.getElementById("dish_id").value
             };
 
             //fetch
@@ -300,11 +311,27 @@ $categories = $database->select("tb_categories", "*");
                     //console.log(data);
 
                     let found = document.getElementById("found");
-                    found.innerText = "We found: " + data.length + " dishes(s)";
+                  
 
                     if (document.getElementById("items") !== null) document.getElementById("items").remove();
 
                     if (data.length > 0) {
+
+                        let dishesContainer = document.getElementById("dishes");
+
+                        if (!dishesContainer) {
+                            dishesContainer = document.createElement("div");
+                            dishesContainer.setAttribute("id", "dishes");
+
+                            var menuForm = document.querySelector('.menu');
+
+                            if (menuForm) {
+
+                                menuForm.parentNode.insertBefore(dishesContainer, menuForm.nextSibling);
+                            } else {
+                                console.error('El formulario no fue encontrado.');
+                            }
+                        }
 
                         let container = document.createElement("div");
                         container.setAttribute("id", "items");
@@ -323,13 +350,13 @@ $categories = $database->select("tb_categories", "*");
                             //create image
                             let image = document.createElement("img");
                             image.classList.add("imageSearch");
-                            image.setAttribute("src", './imgs/' + item.dish_image);
+                            image.setAttribute("src", './imgs/imgsSC/' + item.dish_image);
                             image.setAttribute("alt", item.dish_name);
                             thumb.appendChild(image);
                             //price
                             let price = document.createElement("span");
                             price.classList.add("priceSE");
-                            price.innerText = "$" + item.price + "/night";
+                            price.innerText = "$" + item.price;
                             thumb.appendChild(price);
                             //description
                             let description = document.createElement("p");
@@ -351,6 +378,8 @@ $categories = $database->select("tb_categories", "*");
 
         }
     </script>
+
+
 
 
 </body>

@@ -36,11 +36,13 @@
 }
 
 .btnSe{
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
     display: block;
-    width: 50%;
     margin: auto;
-    background: var(--clr-gray);
-    color: var(--clr-gray-txt);
+    background: var(--clr-main);
+    color: var(--clr-white);
     text-decoration: none;
     padding: 1rem 1.5rem;
     transition: all .3s ease-in-out;

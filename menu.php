@@ -51,7 +51,7 @@ $items = $database->select("tb_dishes", "*");
                     echo "<li><a class='nav-list-link' href='index.php'>".$_SESSION["fullname"]."</a></li>";
                     echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
                 }else {
-                    echo " <li><a class='nav-list-link' href='./login.php'>Login</a></li>";
+                    echo " <li><a class='nav-list-link' href='./login.php'></a></li>";
                 }
                 ?>
             </ul>

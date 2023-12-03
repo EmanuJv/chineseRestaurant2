@@ -89,7 +89,7 @@
             </div>
             
             <div class="form-items">
-                <input class="submit-btn" type="submit" value="Add New Destination">
+                <input class="submit-btn" type="submit" value="Add New Dish">
             </div>
         </form>
     </div>

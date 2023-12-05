@@ -1,8 +1,8 @@
 <?php
-    require_once './database.php';
-    // Reference: https://medoo.in/api/select
-    $items = $database->select("tb_dishes","*");
-    
+require_once './database.php';
+// Reference: https://medoo.in/api/select
+$items = $database->select("tb_dishes", "*");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
             </label>
 
             <!--Navigation list-->
-           
+
             <ul class="nav-list">
                 <?php
                 session_start();
@@ -134,49 +134,50 @@
             <!--<Section Three First Part -->
 
 
- 
 
-    <?php
-        echo "<section class='food-container'>";
-        foreach ($items as $item){
-            if($item["featured"]==1){
-                echo "<div class='card'>";
-                echo "<div class='top-card'>";
-                echo "<div class='boton-modal'>";
-                echo "<a class='btn-orderNowIndex' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-                echo "</label>";
-                echo "</div>";
-                echo "<input type='checkbox' id='btn-modal-uno'>";
-                echo "<div class='container-modal'>";
-                echo "<div class='content-modal'>";
-                echo "<div class='superior-info-modal'>";
-                echo "<div class='info-modal'>";
-                echo "<p>" .'Are you sure you want to order this dish?'. "</p>";
-                echo "</div>";
-                echo "</div>";
-                echo "<div class='cta-price-orderNow'>";
-                echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
-                echo "</div>";
-                echo "<div class='btn-close'>";
-                echo "<label for='btn-modal-uno'>Close</label>";
-                echo "</div>";
-                echo "</div>";
-                echo "<label for='btn-modal-uno' class='close-modal'></label>";
-                echo "</div>";
-                echo "</div>";
-                echo "<div class='recipe-thumb'>";
-                echo "<h5>"  . "</h5>";echo "<img class='recipe-image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
-                echo "<h5 class='recipe-name'>" . $item["dish_name"] . "</h5>";
-                echo "</div>";
-                echo "</div>";
-                echo "</div>";
+
+            <?php
+            echo "<section class='food-container'>";
+            foreach ($items as $item) {
+                if ($item["featured"] == 1) {
+                    echo "<div class='card'>";
+                    echo "<div class='top-card'>";
+                    echo "<div class='boton-modal'>";
+                    echo "<a class='btn-orderNowIndex' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+                    echo "</label>";
+                    echo "</div>";
+                    echo "<input type='checkbox' id='btn-modal-uno'>";
+                    echo "<div class='container-modal'>";
+                    echo "<div class='content-modal'>";
+                    echo "<div class='superior-info-modal'>";
+                    echo "<div class='info-modal'>";
+                    echo "<p>" . 'Are you sure you want to order this dish?' . "</p>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<div class='cta-price-orderNow'>";
+                    echo "<a class='order-now' href='dishInfo.php?id=" . $item["dish_id"] . "'>Order NOW!</a>";
+                    echo "</div>";
+                    echo "<div class='btn-close'>";
+                    echo "<label for='btn-modal-uno'>Close</label>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<label for='btn-modal-uno' class='close-modal'></label>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<div class='recipe-thumb'>";
+                    echo "<h5>" . "</h5>";
+                    echo "<img class='recipe-image' src='./imgs/imgsSC/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                    echo "<h5 class='recipe-name'>" . $item["dish_name"] . "</h5>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                }
             }
-        }
-       
-        echo "</section>";
-    ?>
 
-     
+            echo "</section>";
+            ?>
+
+
 
 
         </section>
@@ -215,7 +216,7 @@
 
     <!--footer-->
 
-     <footer class="footer-container">
+    <footer class="footer-container">
         <div class="footer-content">
             <section>
                 <h3 class="footer-decoration">Shipú Online Restaurant</h3>
@@ -226,15 +227,16 @@
                     to craft an array of delectable dishes that will transport you to the heart of China </p>
             </section>
             <div class="footer-schedule">
-                    <h3 class="footer-decoration">Schedule and Services</h3>
-                    <h4>Sunday to Thursday from 12:00 p.m. to 10:00 p.m. | Friday and Saturday from 12:00 p.m. to 11:00 p.m <br> <br>
-                        .Wi Fi <br>
+                <h3 class="footer-decoration">Schedule and Services</h3>
+                <h4>Sunday to Thursday from 12:00 p.m. to 10:00 p.m. | Friday and Saturday from 12:00 p.m. to 11:00 p.m
+                    <br> <br>
+                    .Wi Fi <br>
 
-                        .After Office <br>
-                        
-                        .Spicy - Gluten Free - Vegetarian <br> 
-                        
-                        .A/C </h4>
+                    .After Office <br>
+
+                    .Spicy - Gluten Free - Vegetarian <br>
+
+                    .A/C </h4>
             </div>
             <div class="footer-links">
                 <section>
@@ -251,7 +253,7 @@
 
                 </section>
             </div>
-            
+
         </div>
         <section class="download-app">
             <h3>Download our App</h3>
@@ -262,10 +264,10 @@
         </section>
         <p class="footer-legal">&copy; 2023. All rights reserved.</p>
     </footer>
-    
-      <!--End footer-->
 
-       <!--Javascript connection -->
+    <!--End footer-->
+
+    <!--Javascript connection -->
     <script src="main.js"></script>
 
 

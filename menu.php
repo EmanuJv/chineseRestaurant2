@@ -313,7 +313,7 @@ $items = $database->select("tb_dishes", "*");
                     //console.log(data);
 
                     let found = document.getElementById("found");
-                  
+
 
                     if (document.getElementById("items") !== null) document.getElementById("items").remove();
 

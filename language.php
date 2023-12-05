@@ -14,19 +14,22 @@ if (isset($_SERVER["CONTENT_TYPE"])) {
             $item = $database->select("tb_dishes", [
                 "tb_dishes.dish_name",
                 "tb_dishes.description"
-            ],[
+            ], [
                 "dish_id" => $decoded["dish_id"]
             ]);
             $dish["name"] = $item[0]["dish_name"];
             $dish["description"] = $item[0]["description"];
         } else {
-            $item = $database->select("tb_dishes", [
-                "tb_dishes.dish_name_ch",
-                "tb_dishes.description_ch"
-            ],
+            $item = $database->select(
+                "tb_dishes",
                 [
-                "dish_id" => $decoded["dish_id"]
-            ]);
+                    "tb_dishes.dish_name_ch",
+                    "tb_dishes.description_ch"
+                ],
+                [
+                    "dish_id" => $decoded["dish_id"]
+                ]
+            );
             $dish["name"] = $item[0]["dish_name_ch"];
             $destination["description"] = $item[0]["description_ch"];
         }

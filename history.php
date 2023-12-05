@@ -51,10 +51,10 @@
         </nav>
     </header>
     <main>
-        
-            <div class="history-container">
-                <h2 class="history-title">History</h2>
-            </div>
+
+        <div class="history-container">
+            <h2 class="history-title">History</h2>
+        </div>
     </main>
 </body>
 

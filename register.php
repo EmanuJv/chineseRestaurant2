@@ -108,7 +108,7 @@ if ($_POST) {
                 <div class='form-items'>
                     <div>
                         <label class='lb-register' for='fullname'>Fullname</label>
-                    
+
                         <input id='fullname' class='inpt-register' type='text' name='fullname'>
                     </div>
                 </div>

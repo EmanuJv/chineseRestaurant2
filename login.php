@@ -17,7 +17,7 @@ if ($_POST) {
                 $_SESSION["isLoggedIn"] = true;
                 $_SESSION["fullname"] = $user[0]["fullname"];
                 //var_dump($_SESSION["fullname"]);
-                
+
                 if ($user[0]["type_user"] === 1) {
                     header("location: admin/dish-list.php");
                 } else {

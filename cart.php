@@ -6,22 +6,22 @@ $dish_details = [];
 $updateCookie = false;
 
 // Check if 'dishes' key exists in $_COOKIE
-if(isset($_COOKIE['dishes'])) {
+if (isset($_COOKIE['dishes'])) {
     $data = json_decode($_COOKIE['dishes'], true);
 
     // Check if json_decode was successful
     if ($data !== null) {
-        if(isset($_GET["buy"]) && $_GET["buy"] >= 0 && $_GET["buy"] < count($data)){
+        if (isset($_GET["buy"]) && $_GET["buy"] >= 0 && $_GET["buy"] < count($data)) {
             // Check if the index is valid before using array_splice
             array_splice($data, $_GET["buy"], 1);
             $updateCookie = true;
         }
-        
+
         $buy_details = $data;
-        
-        if($updateCookie) {
+
+        if ($updateCookie) {
             // Update the cookie only if necessary
-            setcookie('dishes', json_encode($buy_details), time()+72000);
+            setcookie('dishes', json_encode($buy_details), time() + 72000);
         }
     } else {
         // Handle the case where JSON decoding fails
@@ -35,6 +35,7 @@ if(isset($_COOKIE['dishes'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,13 +43,14 @@ if(isset($_COOKIE['dishes'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/main.css"> 
+    <link rel="stylesheet" href="./css/main.css">
 
-   
+
 </head>
+
 <body class="backgroundRegister">
-    
-   
+
+
     <header>
         <!-- top navigation bar -->
         <nav class="top-nav">
@@ -91,49 +93,51 @@ if(isset($_COOKIE['dishes'])) {
                 <h2 class="thanks-title">Thanks</h2>
                 <p class="yourOrder-txt">Your Order:</p>
                 <?php
-                if($buy_details == null){
+                if ($buy_details == null) {
                     echo "<p>You need to order a dish first.</p>";
-                }else{
+                } else {
 
                     echo "<table style='margin-top: 2rem;'>"
-                        ."<tr class='activity-title'>"
-                            ."<td>Dish Name</td>"
-                            ."<td>Amount</td>"
-                            ."<td>Price</td>"
-                            ."<td>People</td>"
-                            ."<td>Total</td>"
-                        ."</tr>";
+                        . "<tr class='activity-title'>"
+                        . "<td>Dish Name</td>"
+                        . "<td>Amount</td>"
+                        . "<td>Price</td>"
+                        . "<td>People</td>"
+                        . "<td>Total</td>"
+                        . "</tr>";
 
-                      foreach ($buy_details as $index=>$buy){
-                       
+                    foreach ($buy_details as $index => $buy) {
+
                         $subtotal_dish = $buy["cost"];
-                     
-                        $data = $database->select("tb_dishes","*",["dish_id" => $buy["id"]]);
+
+                        $data = $database->select("tb_dishes", "*", ["dish_id" => $buy["id"]]);
                         echo "<tr><td></td></tr>";
                         echo "<tr>"
-                                ."<td class='activity-title'>".$data[0]["dish_name"]."</td>"
-                                ."<td>".$buy["people"]."</td>"
-                                ."<td> $".$subtotal_dish."</td>"
-                            ."</tr>";
-                       
-                        }
-                        echo "</table>";
+                            . "<td class='activity-title'>" . $data[0]["dish_name"] . "</td>"
+                            . "<td>" . $buy["people"] . "</td>"
+                            . "<td> $" . $subtotal_dish . "</td>"
+                            . "</tr>";
+
                     }
-            ?>
+                    echo "</table>";
+                }
+                ?>
             </div>
         </div>
 
         <!--Buttons to cancel or pay the order -->
         <div class='orderBtns-container'>
-                <?php 
-                    if($buy_details != null) echo "<div><a class='btn-order-modal btn' href='menu.php'>PayOut</a></div>";
-                
-                ?>
-                <div><a class='btn read-btn' href='menu.php'>Continue exploring dishes</a></div>
-            </div>
+            <?php
+            if ($buy_details != null)
+                echo "<div><a class='btn-order-modal btn' href='menu.php'>PayOut</a></div>";
+
+            ?>
+            <div><a class='btn read-btn' href='menu.php'>Continue exploring dishes</a></div>
+        </div>
 
 
 
     </main>
 </body>
+
 </html>

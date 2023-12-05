@@ -11,24 +11,24 @@ if ($_POST) {
         ]);
 
         if (count($user) > 0) {
+            //var_dump($user[0]["id_customer"]);
             if (password_verify($_POST["pass"], $user[0]["pass"])) {
                 session_start();
                 $_SESSION["isLoggedIn"] = true;
                 $_SESSION["fullname"] = $user[0]["fullname"];
-
+                //var_dump($_SESSION["fullname"]);
+                
                 if ($user[0]["type_user"] === 1) {
-                    header("location: ../dish-list.php");
+                    header("location: admin/dish-list.php");
                 } else {
                     header("location: ./index.php?id=" . $_POST["username"]);
                 }
-                exit(); 
             } else {
-                $messageLogin = "Wrong username or password";
+                $messageLogin = "wrong username or password";
             }
         } else {
-            $messageLogin = "Wrong username or password";
+            $messageLogin = "wrong username or password";
         }
-
     }
 }
 ?>
@@ -64,18 +64,20 @@ if ($_POST) {
 
             <!--Navigation list-->
             <ul class="nav-list">
-                <li><a class="nav-list-link" href="./history.php">USER HISTORY</a></li>
-                <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
-                <li><a class="nav-list-link" href="./cart.php">CART</a></li>
-                <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
-                <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
-                <?php 
+                <?php
                 session_start();
-                if (isset($_SESSION["isLoggedIn"])){
-                    echo "<li><a class='nav-list-link' href='index.php'>".$_SESSION["fullname"]."</a></li>";
+                if (isset($_SESSION["isLoggedIn"])) {
+                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
+                    echo "<li><a class='nav-list-link' href='index.php'>" . $_SESSION["fullname"] . "</a></li>";
                     echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
-                }else {
-                    echo " <li><a class='nav-list-link' href='./login.php'></a></li>";
+                } else {
+                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
+                    echo "<li><a class='nav-list-link' href='./register.php'>SIGN UP</a></li>";
+                    echo " <li><a class='nav-list-link' href='./login.php'>LOGIN</a></li>";
                 }
                 ?>
             </ul>
@@ -86,7 +88,6 @@ if ($_POST) {
 
     <!--Register-->
 
-
     <main>
         <div class="register-container">
             <h2 class="register-welcome">Welcome!</h2>
@@ -94,19 +95,14 @@ if ($_POST) {
             <form method="post" action="login.php" class="register-form">
                 <div>
                     <label class='lb-register' for='username'>Username</label>
-                </div>
-                <div>
-                    <input id='username' class='inpt-register' type='text' name='username'>
-                </div>
 
+                    <input id='username' class='inpt-register' type='text' name='username' required />
+                </div>
 
                 <div>
-                    <label class='lb-register' for='password'>Password</label>
-                </div>
-                <div>
-                    <input id='password' class='inpt-register' type='password' name='password'>
+                    <label class='lb-register' for='pass'>Password</label>
 
-
+                    <input id='pass' class='inpt-register' type='password' name='pass' required />
                 </div>
 
                 <div class="btn-forms-info">
@@ -120,8 +116,9 @@ if ($_POST) {
 
                     <input type="hidden" name="login" value="1">
                 </div>
+
+            </form>
         </div>
-        </form>
     </main>
 </body>
 

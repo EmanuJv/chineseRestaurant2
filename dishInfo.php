@@ -89,18 +89,20 @@ if ($_GET) {
 
             <!-- navigation list -->
             <ul class="nav-list">
-                <li><a class="nav-list-link" href="./history.php">USER HISTORY</a></li>
-                <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
-                <li><a class="nav-list-link" href="./cart.php">CART</a></li>
-                <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
-                <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
                 <?php
                 session_start();
                 if (isset($_SESSION["isLoggedIn"])) {
+                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
                     echo "<li><a class='nav-list-link' href='index.php'>" . $_SESSION["fullname"] . "</a></li>";
                     echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
                 } else {
-                    echo " <li><a class='nav-list-link' href='./login.php'>Login</a></li>";
+                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
+                    echo "<li><a class='nav-list-link' href='./register.php'>SIGN UP</a></li>";
+                    echo " <li><a class='nav-list-link' href='./login.php'>LOGIN</a></li>";
                 }
                 ?>
             </ul>

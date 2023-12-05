@@ -133,7 +133,7 @@
             </div>
             <input type="hidden" name="id" value="<?php echo $item[0]["dish_id"]; ?>">
             <div class="form-items">
-                <input class="submit-btn" type="submit" value="Update Dish">
+                <input class="submit-btn" type="submit" value="Update Dishw">
             </div>
         </form>
     </div>

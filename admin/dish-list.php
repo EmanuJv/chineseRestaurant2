@@ -1,4 +1,7 @@
-<?php 
+
+<?php
+
+ 
     require_once '../database.php';
     // Reference: https://medoo.in/api/select
     $items = $database->select("tb_dishes","*");
@@ -9,8 +12,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registered Users</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
+
 <body>
+<a class='btn btn-order-dish' href='../menu.php'>Menu</a>
     <h2>List Dishes</h2>
     <table>
         <?php

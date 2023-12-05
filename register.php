@@ -2,28 +2,47 @@
 require_once './database.php';
 $message = "";
 
+if ($_POST) {
 
-if (isset($_POST["register"])) {
-    //validate if user already registered
-    $validateUsername = $database->select("tb_customers", "*", [
-        "username" => $_POST["username"]
-    ]);
 
-    if (count($validateUsername) > 0) {
-        $message = "This username is already registered";
-    } else {
-        $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT, ['cost' => 12]);
-        $database->insert("tb_customers", [
-            "fullname" => $_POST["fullname"],
-            "username" => $_POST["username"],
-            "pass" => $pass,
-            "email" => $_POST["email"]
+
+    if (isset($_POST["register"])) {
+        //validate if user already registered
+        $validateUsername = $database->select("tb_customers", "*", [
+            "username" => $_POST["username"]
         ]);
 
-         header("location: menu.php?id=".$_POST["register"]);
-    }
-}
+        if (count($validateUsername) > 0) {
+            $message = "This username is already registered";
+        } else {
+            $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT, ['cost' => 12]);
+            $database->insert("tb_customers", [
+                "fullname" => $_POST["fullname"],
+                "username" => $_POST["username"],
+                "pass" => $pass,
+                "email" => $_POST["email"]
+            ]);
+            //get added user
+            $newUser = $database->select("tb_customers", [
+                "id_customer",
+                "fullname"
+            ], [
+                "username" => $_POST["username"]
+            ]);
 
+            //start sessiona and create session variables
+            session_start();
+            $_SESSION["isLoggedIn"] = true;
+            $_SESSION["fullname"] = $newUser[0]["fullname"];
+
+            //redirect to home page
+            header("location: index.php");
+
+            //header("location: menu.php?id=" . $_POST["register"]);
+        }
+    }
+
+}
 ?>
 
 
@@ -59,18 +78,20 @@ if (isset($_POST["register"])) {
 
 
             <ul class="nav-list">
-                <li><a class="nav-list-link" href="./history.php">USER HISTORY</a></li>
-                <li><a class="nav-list-link" href="./menu.php">MENU</a></li>
-                <li><a class="nav-list-link" href="./cart.php">CART</a></li>
-                <li><a class="nav-list-link" href="./register.php">SIGN UP</a></li>
-                <li><a class="nav-list-link" href="./login.php">LOGIN</a></li>
-                <?php 
+                <?php
                 session_start();
-                if (isset($_SESSION["isLoggedIn"])){
-                    echo "<li><a class='nav-list-link' href='index.php'>".$_SESSION["fullname"]."</a></li>";
+                if (isset($_SESSION["isLoggedIn"])) {
+                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
+                    echo "<li><a class='nav-list-link' href='index.php'>" . $_SESSION["fullname"] . "</a></li>";
                     echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
-                }else {
-                    echo " <li><a class='nav-list-link' href='./login.php'></a></li>";
+                } else {
+                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
+                    echo "<li><a class='nav-list-link' href='./register.php'>SIGN UP</a></li>";
+                    echo " <li><a class='nav-list-link' href='./login.php'>LOGIN</a></li>";
                 }
                 ?>
             </ul>
@@ -88,33 +109,28 @@ if (isset($_POST["register"])) {
                 <div class='form-items'>
                     <div>
                         <label class='lb-register' for='fullname'>Fullname</label>
-                    </div>
-                    <div>
+                    
                         <input id='fullname' class='inpt-register' type='text' name='fullname'>
                     </div>
                 </div>
                 <div class='form-items'>
                     <div>
                         <label class='lb-register' for='email'>Email Address</label>
-                    </div>
-                    <div>
+
                         <input id='email' class='inpt-register' type='text' name='email'>
                     </div>
                 </div>
                 <div class='form-items'>
                     <div>
                         <label class='lb-register' for='username'>Username</label>
-                    </div>
-                    <div>
+
                         <input id='username' class='inpt-register' type='text' name='username'>
                     </div>
                 </div>
                 <div class='form-items'>
                     <div>
                         <label class='lb-register' for='pass'>Password</label>
-                    </div>
-                    <div>
-                        <input id='password' class='inpt-register' type='password' name='password'>
+                        <input id='pass' class='inpt-register' type='password' name='pass'>
                     </div>
                 </div>
                 <div class='btn-forms-info'>

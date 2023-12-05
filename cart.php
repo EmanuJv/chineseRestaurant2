@@ -1,21 +1,36 @@
 <?php
-    require_once './database.php';
-
-    $dish_details = [];
-    $updateCookie = false;
+require_once './database.php';
 
 
+$dish_details = [];
+$updateCookie = false;
+
+// Check if 'dishes' key exists in $_COOKIE
+if(isset($_COOKIE['dishes'])) {
     $data = json_decode($_COOKIE['dishes'], true);
 
-    if(isset($_GET["buy"]) && $_GET["buy"] >= 0 && $data != null){
-        array_splice($data, $_GET["buy"], 1);
-        $updateCookie = true;
-    }
+    // Check if json_decode was successful
+    if ($data !== null) {
+        if(isset($_GET["buy"]) && $_GET["buy"] >= 0 && $_GET["buy"] < count($data)){
+            // Check if the index is valid before using array_splice
+            array_splice($data, $_GET["buy"], 1);
+            $updateCookie = true;
+        }
         
-    $buy_details = $data;
-    
-    if($updateCookie) setcookie('dishes', json_encode($buy_details), time()+72000);
-    
+        $buy_details = $data;
+        
+        if($updateCookie) {
+            // Update the cookie only if necessary
+            setcookie('dishes', json_encode($buy_details), time()+72000);
+        }
+    } else {
+        // Handle the case where JSON decoding fails
+        echo "Error decoding JSON from cookie.";
+    }
+} else {
+    // Handle the case where 'dishes' key is not present in $_COOKIE
+    echo "'dishes' key not found in the cookie.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,17 +67,17 @@
                 <?php
                 session_start();
                 if (isset($_SESSION["isLoggedIn"])) {
-                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
-                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
-                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
-                    echo "<li><a class='nav-list-link' href='index.php'>" . $_SESSION["fullname"] . "</a></li>";
-                    echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
+                    echo " <li><a class='nav-list-link' href='./history.php'>User history</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>Menu</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>Cart</a></li>";
+                    echo "<li><a class='nav-list-link' href='./index.php'>" . $_SESSION["fullname"] . "</a></li>";
+                    echo "<li><a class='nav-list-link' href='./logout.php'>Logout</a></li>";
                 } else {
-                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
-                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
-                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
-                    echo "<li><a class='nav-list-link' href='./register.php'>SIGN UP</a></li>";
-                    echo " <li><a class='nav-list-link' href='./login.php'>LOGIN</a></li>";
+                    echo " <li><a class='nav-list-link' href='./history.php'>User history</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>Menu</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>Cart</a></li>";
+                    echo "<li><a class='nav-list-link' href='./register.php'>Sing up</a></li>";
+                    echo " <li><a class='nav-list-link' href='./login.php'>Login</a></li>";
                 }
                 ?>
             </ul>
@@ -112,8 +127,7 @@
         <div class='orderBtns-container'>
                 <?php 
                     if($buy_details != null) echo "<div><a class='btn-order-modal btn' href='menu.php'>PayOut</a></div>";
-                    //unset($_COOKIE['destinations']);
-                    //setcookie('destinations', '', time() - 3600);
+                
                 ?>
                 <div><a class='btn read-btn' href='menu.php'>Continue exploring dishes</a></div>
             </div>

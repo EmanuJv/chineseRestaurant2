@@ -377,6 +377,12 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
 }
+.list-container{
+    text-align: center;
+    justify-content: center; 
+    display: grid;
+    background-color: rgba(91, 88, 88, 0.71); 
+}
 
 
 

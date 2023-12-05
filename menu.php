@@ -43,17 +43,17 @@ $items = $database->select("tb_dishes", "*");
                 <?php
                 session_start();
                 if (isset($_SESSION["isLoggedIn"])) {
-                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
-                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
-                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
-                    echo "<li><a class='nav-list-link' href='index.php'>" . $_SESSION["fullname"] . "</a></li>";
-                    echo "<li><a class='nav-list-link' href='logOut.php'>Logout</a></li>";
+                    echo " <li><a class='nav-list-link' href='./history.php'>User history</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>Menu</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>Cart</a></li>";
+                    echo "<li><a class='nav-list-link' href='./index.php'>" . $_SESSION["fullname"] . "</a></li>";
+                    echo "<li><a class='nav-list-link' href='./logout.php'>Logout</a></li>";
                 } else {
-                    echo " <li><a class='nav-list-link' href='./history.php'>USER HISTORY</a></li>";
-                    echo "<li><a class='nav-list-link' href='./menu.php'>MENU</a></li>";
-                    echo "<li><a class='nav-list-link' href='./cart.php'>CART</a></li>";
-                    echo "<li><a class='nav-list-link' href='./register.php'>SIGN UP</a></li>";
-                    echo " <li><a class='nav-list-link' href='./login.php'>LOGIN</a></li>";
+                    echo " <li><a class='nav-list-link' href='./history.php'>User history</a></li>";
+                    echo "<li><a class='nav-list-link' href='./menu.php'>Menu</a></li>";
+                    echo "<li><a class='nav-list-link' href='./cart.php'>Cart</a></li>";
+                    echo "<li><a class='nav-list-link' href='./register.php'>Sing up</a></li>";
+                    echo " <li><a class='nav-list-link' href='./login.php'>Login</a></li>";
                 }
                 ?>
             </ul>

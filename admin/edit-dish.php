@@ -84,29 +84,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Destination</title>
+    <link rel="stylesheet" href="./css/main.css">
    <!-- <link rel="stylesheet" href="../css/themes/admin.css">-->
 </head>
 <body>
-    <div class="container">
-        <h2>Edit Destination</h2>
+    <div class="register-container">
+        <h2 class='register-welcome' >Edit Destination</h2>
         <?php 
             echo $message;
         ?>
         <form method="post" action="edit-dish.php" enctype="multipart/form-data">
             <div class="form-items">
-                <label for="dish_name">Dish Name</label>
+                <label class='lb-register' for="dish_name">Dish Name</label>
                 <input id="dish_name" class="textfield" name="dish_name" type="text" value="<?php echo $item[0]["dish_name"] ?>">
             </div>
             <div class="form-items">
-                <label for="dish_name_fr">Dish Name Chinese</label>
+                <label class='lb-register' for="dish_name_fr">Dish Name Chinese</label>
                 <input id="dish_name_ch" class="textfield" name="dish_name_ch" type="text" value="<?php echo $item[0]["dish_name_ch"] ?>">
             </div>
             <div class="form-items">
-                <label for="description">Description</label>
+                <label class='lb-register' for="description">Description</label>
                 <textarea id="description" name="description" id="" cols="30" rows="10"><?php echo $item[0]["description"]; ?></textarea>
             </div>
             <div class="form-items">
-                <label for="description_ch">Description Chinese</label>
+                <label class='lb-register' for="description_ch">Description Chinese</label>
                 <textarea id="description_ch" name="description_ch" id="" cols="30" rows="10"><?php echo $item[0]["description_ch"]; ?></textarea>
             </div>
             <!-- <div class="form-items">
@@ -123,17 +124,17 @@
             </div> -->
             
             <div class="form-items">
-                <label for="dish_image">Image</label>
+                <label class='lb-register' for="dish_image">Image</label>
                 <img id="preview" src="../imgs/<?php echo $item[0]["dish_image"]; ?>" alt="Preview">
                 <input id="dish_image" type="file" name="dish_image" onchange="readURL(this)">
             </div>
             <div class="form-items">
-                <label for="price">Price</label>
+                <label class='lb-register' for="price">Price</label>
                 <input id="price" class="textfield" name="price" type="text" value="<?php echo $item[0]["price"] ?>">
             </div>
             <input type="hidden" name="id" value="<?php echo $item[0]["dish_id"]; ?>">
             <div class="form-items">
-                <input class="submit-btn" type="submit" value="Update Dishw">
+                <input class="submit-btn" type="submit" value="Update Dish">
             </div>
         </form>
     </div>
